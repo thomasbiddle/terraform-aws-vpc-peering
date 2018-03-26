@@ -33,3 +33,11 @@ variable "peer_to_route_tables" {
 
   description = "List of route tables from the peer to VPC."
 }
+
+variable "auto_accept" {
+  type = "string"
+
+  description = "Specify whether or not connections should be automatically accepted"
+
+  default = true
+}
