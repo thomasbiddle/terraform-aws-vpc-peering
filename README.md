@@ -17,7 +17,10 @@ Module Input Variables
 - `peer_from_vpc_id` - the VPC ID of the initiating VPC.
 - `peer_to_vpc_id` - the VPC ID of the receiving VPC.
 - `peer_from_route_tables` - route tables of the initiating VPC to add routes to the receiving VPC for.
-- `peer_to_vpc_route_tables` - route tables of the receiving VPC to add routes to the initiating VPC for.
+- `peer_to_route_tables` - route tables of the receiving VPC to add routes to the initiating VPC for.
+- `peer_to_region` - The region of the VPC accepting the connection.
+- `peer_to_profile` - The AWS profile credentials to use to accept the peer connection.
+- `peer_to_credentials` - The location of the credentials file to use for accepting the connection.
 - `auto_accept` - specify whether or not this connection should automatically be accepted
 
 
@@ -36,6 +39,10 @@ module "vpc_peering" {
   
   peer_from_route_tables   = ["rtb-xyz12345", "rtb-xyz54321", "rtb-xyz99999"]
   peer_to_route_tables     = ["rtb-abcd1234", "rtb-abcd5678"]
+
+  peer_to_region            = "us-east-2"
+  peer_to_credentials       = "~/.aws/creds"
+  peer_to_profile           = "default"
 }
 ```
 

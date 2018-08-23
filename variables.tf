@@ -41,3 +41,23 @@ variable "auto_accept" {
 
   default = true
 }
+
+variable "peer_to_region" {
+  type = "string"
+
+  description = "The region of the vpc peering connection"
+}
+
+variable "peer_to_profile" {
+  type = "string"
+
+  description = "Profile to use for the peering conneciton"
+
+  default = "default"
+}
+
+variable "peer_to_credentials" {
+  type = "string"
+
+  description = "location of credentials file"
+}

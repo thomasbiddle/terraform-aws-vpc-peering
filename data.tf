@@ -3,5 +3,6 @@ data "aws_vpc" "peer_from_vpc" {
 }
 
 data "aws_vpc" "peer_to_vpc" {
-  id = "${var.peer_to_vpc_id}"
+  provider = "aws.peer"
+  id       = "${var.peer_to_vpc_id}"
 }

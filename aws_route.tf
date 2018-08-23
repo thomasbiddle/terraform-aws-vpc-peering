@@ -6,12 +6,13 @@ resource "aws_route" "peer_from_to_peer_to" {
 
   route_table_id            = "${element(var.peer_from_route_tables, count.index)}"
   destination_cidr_block    = "${data.aws_vpc.peer_to_vpc.cidr_block}"
-  vpc_peering_connection_id = "${aws_vpc_peering_connection.peer_from_to_peer_to_vpc.id}"
+  vpc_peering_connection_id = "${aws_vpc_peering_connection.peer_from_vpc.id}"
 }
 resource "aws_route" "peer_to_to_peer_from" {
   count = "${length(var.peer_to_route_tables)}"
 
+  provider                  = "aws.peer"
   route_table_id            = "${element(var.peer_to_route_tables, count.index)}"
   destination_cidr_block    = "${data.aws_vpc.peer_from_vpc.cidr_block}"
-  vpc_peering_connection_id = "${aws_vpc_peering_connection.peer_from_to_peer_to_vpc.id}"
+  vpc_peering_connection_id = "${aws_vpc_peering_connection_accepter.peer_to_vpc.id}"
 }
