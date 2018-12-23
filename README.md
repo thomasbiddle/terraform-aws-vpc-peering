@@ -4,20 +4,19 @@ aws\_vpc_peering terraform module
 A terraform module to provide a VPC peering from one VPC to another.
 
 **Notes:**
-
-- AWS does not support multi-region VPC peering; this will only work when both VPCs are within the same region.
 - There must not be a CIDR block overlap between the two VPCs.
-- Ensure that your VPCs have an appropriate "Name" tag
+- Ensure that your VPCs have an appropriate "Name" tag as these are used to name the new VPC.
+- Multi-region VPC Peering cannot be auto-accepted.
 
 
 Module Input Variables
 ----------------------
 
-- `peer_src_vpc_id`           - the VPC ID of the initiating VPC.
-- `peer_dst_vpc_id`           - the VPC ID of the receiving VPC.
-- `peer_src_route_tables`     - route tables of the initiating VPC to add routes to the receiving VPC for.
-- `peer_dst_vpc_route_tables` - route tables of the receiving VPC to add routes to the initiating VPC for.
-- `auto_accept`               - specify whether or not this connection should automatically be accepted
+- `peer_src_vpc_id`           - The VPC ID of the initiating VPC.
+- `peer_dst_vpc_id`           - The VPC ID of the receiving VPC.
+- `peer_src_route_tables`     - Route tables of the initiating VPC to add routes to the receiving VPC for.
+- `peer_dst_vpc_route_tables` - Route tables of the receiving VPC to add routes to the initiating VPC for.
+- `auto_accept`               - Specify whether or not this connection should automatically be accepted. Must be set to false if VPCs are not in the same region.
 
 
 Usage

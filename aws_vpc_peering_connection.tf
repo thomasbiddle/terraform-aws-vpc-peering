@@ -1,6 +1,9 @@
 resource "aws_vpc_peering_connection" "default" {
+  provider = "aws.src"
   peer_vpc_id   = "${data.aws_vpc.peer_dst_vpc.id}"
   vpc_id        = "${data.aws_vpc.peer_src_vpc.id}"
+
+  peer_region = "${data.aws_region.dst_vpc.name}"
 
   auto_accept = "${var.auto_accept}"
 
