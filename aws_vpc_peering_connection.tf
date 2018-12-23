@@ -5,7 +5,8 @@ resource "aws_vpc_peering_connection" "default" {
   auto_accept = "${var.auto_accept}"
 
   tags = {
-    Name    = "${var.peer_src_vpc_name} to ${var.peer_dst_vpc_name}"
+    # A bit opinionated here, but this will fail without a Name tag. Seems like a good practice to have anyhow.
+    Name    = "${data.aws_vpc.peer_src_vpc.tags["Name"]} to ${data.aws_vpc.peer_dst_vpc.tags["Name"]}"
     Comment = "Managed By Terraform"
   }
 }

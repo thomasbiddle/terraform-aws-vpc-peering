@@ -1,9 +1,3 @@
-variable "peer_src_vpc_name" {
-  type = "string"
-
-  description = "Name for the peer_src VPC."
-}
-
 variable "peer_src_vpc_id" {
   type = "string"
 
@@ -14,12 +8,6 @@ variable "peer_src_route_tables" {
   type = "list"
 
   description = "List of route tables from the peer_src VPC"
-}
-
-variable "peer_dst_vpc_name" {
-  type = "string"
-
-  description = "Name for the peer_dst VPC."
 }
 
 variable "peer_dst_vpc_id" {
